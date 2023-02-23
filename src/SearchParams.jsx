@@ -1,13 +1,13 @@
 import { useState } from "react";
+const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
-let v = "";
 /* eslint-disable no-unused-vars */
 const SearchParams = () => {
   const [location, setLocation] = useState("");
-  v = location;
+  const [animal, setAnimal] = useState("");
+
   return (
     <div className="search-params">
-      <h1>{v}</h1>
       <form>
         <label htmlFor="location">
           Location
@@ -18,6 +18,18 @@ const SearchParams = () => {
             placeholder="Location"
           />
         </label>
+        <label htmlFor="animal">Animal</label>
+        <select
+          id="animal"
+          value={animal}
+          onChange={(e) => {
+            setAnimal(e.target.value);
+          }}
+        >
+          {ANIMALS.map((animal) => (
+            <option key={animal}> {animal}</option>
+          ))}
+        </select>
         <button>Submit</button>
       </form>
     </div>
